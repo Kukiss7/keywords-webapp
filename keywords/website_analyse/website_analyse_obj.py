@@ -61,13 +61,8 @@ class WebBytes:
             every error is saved in self.error
         """
         req = urllib.request.Request(self.url, headers=self.request_headers)
-        try:
-            with urllib.request.urlopen(req) as url_bytes:
-                self._save_sauce(url_bytes)
-        except urllib.error.HTTPError as e:
-            self.http_error = e
-        except Exception as e:
-            self.error = str(e)
+        with urllib.request.urlopen(req) as url_bytes:                          # urllib.error.HTTPError
+            self._save_sauce(url_bytes)
 
 
     def _save_sauce(self, url_bytes):

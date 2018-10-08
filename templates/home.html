@@ -8,6 +8,11 @@
           {% csrf_token %}
 
           {{ form }}
+          {% for error in errors %}
+            <div class="alert alert-danger" role="alert">
+              <p> {{ error }} </p>
+            </div>
+          {% endfor %}
 
           {% if form.non_field_errors %}
             <div class="alert alert-danger" role="alert">
@@ -22,8 +27,20 @@
         </form>
       </div>
     </div>
-    {% for kw in res %}
-    <p> {{ kw }} : {{amount }}</p>
-    {% endfor %}
+    
+    <div id="results">
+      <table class="table table-striped" style="max-width: 300px;">
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Count</th>
+          </tr>
+        </thead>
+        {% for kw, amount in res %} 
+          <tr>
+            <td> {{ kw }} </td>
+            <td> {{ amount }} </td>
+          </tr>
+        {% endfor %}
   </div>
 {% endblock content %}
