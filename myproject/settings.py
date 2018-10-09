@@ -23,7 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'keywords'
+    'keywords',
+    'django-rq'   # NOT NEEDED?
 ]
 
 MIDDLEWARE = [
@@ -85,6 +86,17 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+RQ_QUEUES = {               # NOT NEEDED?
+    'default': {
+    'HOST': 'localhost',
+    'PORT': 6379,
+    'DB': 0,
+    'PASSWORD': 'jkhdalisuyd-034r2i3u',
+    'DEFAULT_TIMEOUT': 360,
+    }
+}
 
 
 # Internationalization

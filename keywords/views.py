@@ -30,8 +30,8 @@ def home(request, url=None):
                 url.keywords = kw_data.data
                 try:
                     url.save()
-                except:
-                    errors.append('Unable to add item to database')
+                except Exception as e:
+                    errors.append(f'Unable to add item to database; {e}')
 
                 # return redirect('results', {'data':'abc'})         #TODO some clever redirection
                 return render(request, 'home.html', {'form': form, 'errors': errors,'res':res})
