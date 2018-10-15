@@ -1,11 +1,12 @@
 import os
+from decouple import config
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 
-SECRET_KEY = 'ih8+a(a5+)3c%p@3%*o0ui_!q$ti*0_syb0uxq*nh-@&m)t8xr'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
