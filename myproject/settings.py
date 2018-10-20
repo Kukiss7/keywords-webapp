@@ -1,17 +1,22 @@
 import os
-from decouple import config
+from decouple import config, Csv
+import dj_database_url
+
+
+
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('DATABASE_URL')
+#     )
+# }
+
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-
-SECRET_KEY = os.environ['SECRET_KEY']
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -25,7 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'keywords',
-    'django-rq'   # NOT NEEDED?
+    'django_rq'   # NOT NEEDED?
 ]
 
 MIDDLEWARE = [
@@ -64,8 +69,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'keywords',
-        'USER': 'keywordsuser',
-        'PASSWORD': 'password',
+        'USER': 'keywords',
+        'PASSWORD': 'BcasDYxjuopQdRMgBPzxOCexPRVAq',                          # TODO move to .env file
         'HOST': 'localhost',
         'PORT': ''
     }
